@@ -1,0 +1,63 @@
+﻿@model RestaurantApplication.Models.IngredientViewModel
+
+@{
+    ViewData["Title"] = "Add some Ingridient";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<style type="text/css">
+    .field-validation-error {
+    color: #b94a48;
+}
+  
+.field-validation-valid {
+    display: none;
+}
+  
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+  
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+  
+.validation-summary-errors {
+    color: #b94a48;
+}
+  
+.validation-summary-valid {
+    display: none;
+}
+</style>
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend></legend>
+
+        <div>
+            <label asp-for="Name"></label><br />
+            <input type="text" asp-for="Name" placeholder="Example - 'mango'"/>
+            <span asp-validation-for="Name"> </span>
+        </div>
+
+        <p>
+            Dish <br />
+            @Html.DropDownListFor(model => model.DishId, ViewBag.Dishes as SelectList)
+        </p>
+
+        <p>
+            <input class="btn btn-success" type="submit" value="Add" />
+        </p>
+    </fieldset>
+
+}
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<RestaurantApplication.Models.DishViewModel>
+
+
+<div class="row mt-5 mb-2">
+
+    @foreach (var item in Model)
+    {
+    <div class="col-lg-4">
+
+        @Html.DisplayFor(modelItem => item.Name)
+
+        <a class="btn btn-info" asp-area="" asp-controller="Home" asp-action="ChangePrice1" asp-route-id="@item.Id">
+            ChangePrice
+        </a>
+
+    </div>
+
+    }
+
+</div>

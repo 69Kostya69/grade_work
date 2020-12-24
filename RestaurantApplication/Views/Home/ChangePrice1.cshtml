@@ -1,0 +1,65 @@
+﻿@model RestaurantApplication.Models.DishView
+
+@{
+    ViewData["Title"] = "Change price of dish";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<style type="text/css">
+    .field-validation-error {
+        color: #b94a48;
+    }
+
+    .field-validation-valid {
+        display: none;
+    }
+
+    input.input-validation-error {
+        border: 1px solid #b94a48;
+    }
+
+    input[type="checkbox"].input-validation-error {
+        border: 0 none;
+    }
+
+    .validation-summary-errors {
+        color: #b94a48;
+    }
+
+    .validation-summary-valid {
+        display: none;
+    }
+</style>
+
+
+<h2>Dish: @Model.Name</h2>
+
+@using (Html.BeginForm("ChangePrice1", "Home", FormMethod.Post))
+{
+<fieldset>
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.img)
+    @Html.HiddenFor(m => m.Name)
+    @Html.HiddenFor(m => m.TimeCook)
+    @Html.HiddenFor(m => m.typeofdish)
+
+    <p>
+        @Html.LabelFor(m => m.Price, "Price")
+        <br />
+        @Html.EditorFor(m => m.Price)
+
+        <span asp-validation-for="Price"> </span>
+    </p>
+
+    <p> <input class="btn btn-success" type="submit" value="Save" /></p>
+</fieldset>
+}
+
+
+
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
